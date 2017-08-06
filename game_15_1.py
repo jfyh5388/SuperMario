@@ -14,14 +14,15 @@ def run_game():
 	
 	# 创建马里奥
 	mario = Mario(screen, ai_settings)
+
 	# 创建一个蘑菇
 	mushroom = Mushroom(screen, ai_settings)	
-
-
+	
 	# 开始游戏的主循环
 	while True:
 		# 监视键盘和鼠标事件
-		gf.check_events(mario)
+		
+		gf.check_events(mario)		
 		mario.update()		
 		gf.check_mario_mushroom_collisions(mario, mushroom)
 		mushroom.update()

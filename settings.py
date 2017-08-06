@@ -8,7 +8,10 @@ class Settings():
 		self.screen_height = 800
 		self.bg_color = (230, 230, 230)
 		#self.bg_color = (0, 0, 255)
-		self.mario_speed_factor = 1.5
+		self.mario_speed_factor = 1
 	
 		self.fleet_drop_speed = 1
+		self.jump_speed = 2
+		self.fall_speed = 3
+		self.jump_height = 100
 

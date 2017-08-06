@@ -5,10 +5,14 @@ from mushroom import Mushroom
 
 def check_keydown_events(event, mario):
 	#"""ÏìÓ¦°´¼ü"""
+	#print(mario.rect.bottom)
+	#print(mario.screen_rect.bottom)
 	if event.key == pygame.K_RIGHT:
 		mario.moving_right = True
 	elif event.key == pygame.K_LEFT:
 		mario.moving_left = True
+	elif event.key == pygame.K_UP and mario.rect.bottom == mario.screen_rect.bottom:
+		mario.moving_up = True
 	elif event.key == pygame.K_q:
 		sys.exit()
 
