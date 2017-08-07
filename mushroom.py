@@ -3,7 +3,7 @@ from pygame.sprite import Sprite
 from random import randint
 class Mushroom(Sprite):
 	#"""表示单个蘑菇的类"""
-	def __init__(self, screen, ai_settings):
+	def __init__(self, screen, ai_settings, status):
 	#"""初始化蘑菇并设置其起始位置"""
 		super(Mushroom, self).__init__()
 		self.screen = screen
@@ -19,9 +19,12 @@ class Mushroom(Sprite):
 		
 		self.eaten = 0
 		
-	def check_edges(self):
+	def check_edges(self, status):
 		#"""如果蘑菇位于屏幕边缘，就返回True"""
-		if self.rect.bottom >= self.screen.get_rect().bottom:
+		if self.rect.bottom >= self.screen.get_rect().bottom:			
+			self.ai_settings.fallen_limit -= 1
+			if(self.ai_settings.fallen_limit <= 0):
+				status.game_active = False
 			return True
 
 
@@ -29,8 +32,8 @@ class Mushroom(Sprite):
 		#"""在指定位置绘制蘑菇""
 		self.screen.blit(self.image, self.rect)
 		
-	def update(self):
-		if(self.check_edges() or self.eaten == 1):
+	def update(self, status):
+		if((self.check_edges(status) or self.eaten == 1) and status.game_active):
 			self.rect.x = randint(0, self.screen.get_rect().width-self.rect.width)
 			self.rect.y = 0
 			self.eaten = 0

@@ -15,3 +15,4 @@ class Settings():
 		self.fall_speed = 3
 		self.jump_height = 100
 
+		self.fallen_limit = 3
